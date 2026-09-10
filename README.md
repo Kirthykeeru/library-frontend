@@ -1,32 +1,31 @@
-# React + TypeScript + Vite
+# Library Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+React + TypeScript + Tailwind UI for the [library-backend](https://github.com/Kirthykeeru/library-backend) API — login/registration, book catalog, member management, and borrow-record tracking, with role-based views for students vs. staff.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React 19 + React Router
+- TypeScript
+- Tailwind CSS
+- Vite
+- Axios
 
-## React Compiler
+## Setup
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the Oxlint configuration
-
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
-
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+npm install
+cp .env.example .env   # set VITE_API_URL to your backend's URL
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+## Build
+
+```bash
+npm run build   # outputs static files to dist/
+```
+
+## Deployment
+
+This is a static site once built — deploy `dist/` directly to a free static host (Vercel, Netlify, Cloudflare Pages) rather than using the included `Dockerfile`, which is only needed if you specifically want to run the frontend as a container.
+
+Set the `VITE_API_URL` environment variable on your host to your deployed backend's URL before building — Vite bakes it into the bundle at build time.
